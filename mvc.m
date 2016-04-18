@@ -1,3 +1,17 @@
+% Multi-View Clustering using Spherical k-Means.
+% See: S. Bickel, T. Scheffer: Multi-View Clustering, ICDM 04.
+% Hierachical clustering used to determine the initial centers for k-Means
+% 
+% @param view1 View number one, a data frame with the same row names as view2. All columns numeric. Entries are natural numbers, starting from 1.
+% @param view2 View number two, a data frame with the same row names as view1. All columns numeric. Entries are natural numbers, starting from 1.
+% @param k The maximum number of clusters to create
+% @param startView The view on which to perform the initial E step, one of "view1", "view2"
+% @param nthresh The number of iterations to run without improvement of the objective function
+% @param doOutput Whether output to the console should be done
+% @param doDebug Whether debug output to the console should be done (implies normal output)
+% @param plotFile File name where the hierarchical clustering plot should be stored
+% @return A list reporting the final clustering, with names finalIndices, agreementRate, indicesSv, indicesOv. They designate final cluster indices as a vector, as well as agreement rate of the two views, and the individual indices given by the two views over the course of iterations as data frames.
+
 function [cluster_indicator] = mvc(view1, view2, K, nround)
 
     if nargin < 4
